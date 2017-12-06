@@ -37,6 +37,8 @@ gem 'devise'
 
 #Use 'carrierwave'  20171206
 gem 'carrierwave' 
+#Use 'ffaker'  20171206
+gem 'ffaker'
 
 
 group :development, :test do

@@ -5,6 +5,8 @@ Tel:<%= @restaurant.tel %> <br>
 Address:<%= @restaurant.address %> <br>
 Description:<%= @restaurant.description %> <br>
 
+<%= image_tag @restaurant.image, width: '600px' %>
+
 <br>
 
 <%= link_to "back to inaex", admin_restaurants_path %> 

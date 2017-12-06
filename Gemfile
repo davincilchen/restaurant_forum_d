@@ -39,7 +39,8 @@ gem 'devise'
 gem 'carrierwave' 
 #Use 'ffaker'  20171206
 gem 'ffaker'
-
+#Use 'kaminari'  20171206
+gem 'kaminari'
 
 
 group :development, :test do

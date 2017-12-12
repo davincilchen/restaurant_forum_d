@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
    
   def authenticate_admin
     unless current_user.admin?
-      flash[:alert] = "Not allow! nonono~"
+      flash[:alert] = "Not admin, Not allow!!"
       redirect_to root_path
     end
   end

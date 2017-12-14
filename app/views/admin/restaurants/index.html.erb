@@ -1,6 +1,9 @@
+<div class="container">
 <h1>餐廳後台</h1>
+<%= link_to 'New Restaurant', new_admin_restaurant_path, class: "btn btn-primary" %>
+<br>
+<br>
 <table class="table table-bordered">
-
   <thead>
     <tr>
       <th>ID</th>
@@ -20,7 +23,7 @@
   </tr>
   <% end %>
 </table>
-<br>
 <%= paginate @restaurants %>
 <br>
-<%= link_to 'New Restaurant', new_admin_restaurant_path %>
+</div>
+

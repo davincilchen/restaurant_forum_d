@@ -60,7 +60,8 @@ class Admin::RestaurantsController < ApplicationController
                                       :tel,
                                       :address,
                                       :description,
-                                      :image
+                                      :image,
+                                      :category_id
                                       )
   end
 

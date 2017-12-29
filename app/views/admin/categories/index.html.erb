@@ -27,13 +27,17 @@
           <tr>
             <td>#</td>
             <td>類別</td>
+            <td>編輯</td>
+            <td>刪除</td>
           </tr>
         </thead>
-          <tbody>
+        <tbody>
           <% @categories.each do |category| %>
             <tr>
               <td><%= category.id%></td>
               <td><%= category.name%></td>
+              <td><%= link_to "Edit", admin_categories_path(id: category.id) %></td>
+              <td><%= link_to "Delete", admin_category_path(category) , method: :delete, data:{confirm: "Are you sure?"} %></td>
             </tr>
           </tbody>
         <% end %>

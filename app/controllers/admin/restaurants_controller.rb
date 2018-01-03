@@ -5,6 +5,8 @@ class Admin::RestaurantsController < Admin::BaseController
     #@restaurants = Restaurant.all
     #use Kaminari page
     @restaurants = Restaurant.page(params[:page]).per(10)
+    @page = params[:page]
+
   end
 
 

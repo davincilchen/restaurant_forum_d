@@ -6,7 +6,9 @@ class Admin::RestaurantsController < Admin::BaseController
     #use Kaminari page
     @restaurants = Restaurant.order(updated_at: :desc).page(params[:page]).per(10)
     @page = params[:page]
-
+    if !@page
+      @page = "1"
+     end
   end
 
 

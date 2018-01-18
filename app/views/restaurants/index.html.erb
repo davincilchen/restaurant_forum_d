@@ -1,14 +1,13 @@
-<h1>餐廳前台</h1>
 
 <div class="container">
-
-  <ul class="nav nav-pills nav-pills-center">
-    <li role="presentation" class="active"><%= link_to "全部餐廳", root_path%></li>
-    <% @categories.each do |category| %>
-      <li role="presentation"><%= link_to category.name, category_path(category)%></li>
-    <% end %>
-  </ul>
   <div class="row">
+    <ul class="nav nav-pills nav-pills-center">
+      <li role="presentation" class="active"><%= link_to "全部餐廳", root_path%></li>
+      <% @categories.each do |category| %>
+        <li role="presentation"><%= link_to category.name, category_path(category)%></li>
+      <% end %>
+    </ul>
+    <br>
     <% @restaurants.each do |restaurant| %>
       <div class="ccol-sm-6 col-md-4">
         <div class="restaurant-item">
@@ -25,10 +24,9 @@
         </div>
       </div>
     <% end %>
+    <!-- 有generate kaminari paginate bootstrap style -->
+    <div class="text-center">
+      <%= paginate @restaurants %>
+    </div>
   </div>
-</div>
-
-<!-- 有generate kaminari paginate bootstrap style -->
-<div class="text-center">
-  <%= paginate @restaurants %>
 </div>

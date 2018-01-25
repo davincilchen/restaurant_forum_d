@@ -17,13 +17,19 @@ class Admin::RestaurantsController < Admin::BaseController
   end
 
   def create
+
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      flash[:notice] = "restaurant was successfully created"
-      redirect_to admin_restaurants_path
+    if ! Restaurant.where('lower(name) = ?', @restaurant.name.downcase).first
+      if @restaurant.save
+        flash[:notice] = "restaurant was successfully created"
+        redirect_to admin_restaurants_path
+      else
+        flash.now[:alert] = "rastaurant was failed to create"
+        render :new
+      end
     else
-      flash.now[:alert] = "rastaurant was failed to create"
-      render :new
+        flash[:alert] = "Rastaurant was already exist"
+        render :new
     end
   end
 

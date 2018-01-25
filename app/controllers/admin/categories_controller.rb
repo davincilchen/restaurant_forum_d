@@ -15,10 +15,17 @@ class Admin::CategoriesController < Admin::BaseController
 
   def create
     @category = Category.new(category_params)
-    if @category.save
-      flash[:notice] = "category was successfully created"
-      redirect_to admin_categories_path
+
+    if ! Category.where('lower(name) = ?', @category.name.downcase).first
+      if @category.save
+        flash[:notice] = "Category was successfully created"
+        redirect_to admin_categories_path
+      else
+        @categories = Category.all
+        render :index
+      end
     else
+      flash[:alert] = "Category was already exist"
       @categories = Category.all
       render :index
     end
@@ -27,7 +34,7 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     if @category.update(category_params)
       redirect_to admin_categories_path
-      flash[:notice] = "category was successfully updated"
+      flash[:notice] = "Category was successfully updated"
     else
       @categories = Category.all
       render :index
@@ -38,7 +45,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category.destroy
-    flash[:notice] = "category was successfully deleted"
+    flash[:notice] = "Category was successfully deleted"
     redirect_to admin_categories_path
   end
 

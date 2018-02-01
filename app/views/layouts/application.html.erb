@@ -28,9 +28,10 @@
              <!-- check user -->
              <% if current_user %>
               <% if current_user.admin? %>
-                <li><%= link_to "admin後台"  , admin_restaurants_path%></li>
+                <li><%= link_to "Admin後台", user_path(current_user) %></li>
               <% end %>
               <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+              <li><%= link_to "profile", admin_restaurants_path %></li>
               <form class="navbar-form navbar-right"> <!--form for button postion "center" -->
                 <button class="btn btn-default"><%= link_to('登出', destroy_user_session_path, method: :delete) %></button>
                 <button class="btn btn-default"><%= link_to('修改密碼', edit_user_registration_path) %></button>

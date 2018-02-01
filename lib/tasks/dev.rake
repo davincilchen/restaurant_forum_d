@@ -40,6 +40,14 @@ namespace :dev do
     puts "now you have #{User.count} users data"
   end
 
+  task fake_user_name: :environment do
+    User.all.each do |user|
+      user.name = FFaker::Name.first_name
+      user.save
+    end
+    puts "have create fake name of users"
+  end
+
   task fake_comment_clear: :environment do
     Comment.destroy_all
   end

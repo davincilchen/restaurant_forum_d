@@ -16,7 +16,11 @@
     </div>
     <div>
     <div class="col-md-6">
-      <%= image_tag @restaurant.image, width: '100%' %>
+      <% if @restaurant.image? %>
+        <%= image_tag @restaurant.image, width: '100%' %>
+      <% else %>
+        <span class="glyphicon glyphicon-picture"></span>
+      <% end %>
     </div>
     <div class="col-md-6">
       <br>

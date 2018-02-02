@@ -1,6 +1,6 @@
 <div class="restaurants clearfix">
   <% @restaurants.each do |restaurant| %>
-    <div class="ccol-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4">
       <div class="restaurant-item">
         <% if restaurant.image? %>
            <%= image_tag restaurant.image, class: "img-responsive center-block" %>

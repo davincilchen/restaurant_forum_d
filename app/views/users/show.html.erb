@@ -1,1 +1,18 @@
-
+<div class="container">
+  <div class="row">
+    <br>
+    <div class="col-md-4">
+        <%= image_tag @user.avatar , width:"100%" %>
+    </div>
+    <div class="col-md-6">
+      <% if @user.name? %>
+        <h1><%= @user.name%></h1>
+      <% else %>
+        <h1><%= @user.email.split("@").first%></h1>
+      <% end %>
+      <h4><%= @user.email%></h4>
+      <p><%= @user.introduction%><p>
+      <div class="btn btn-primary">Edit Profile</div>
+    </div>
+  </div>
+</div>

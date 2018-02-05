@@ -39,7 +39,6 @@ class Admin::CategoriesController < Admin::BaseController
       @categories = Category.all
       render :index
     end
-
   end
 
 

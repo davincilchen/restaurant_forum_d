@@ -4,6 +4,5 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     @category = Category.find(params[:id])
     @restaurants = @category.restaurants.page(params[:page]).per(9)
-
   end
 end

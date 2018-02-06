@@ -21,10 +21,10 @@ class Admin::RestaurantsController < Admin::BaseController
     @restaurant = Restaurant.new(restaurant_params)
     if ! Restaurant.where('lower(name) = ?', @restaurant.name.downcase).first
       if @restaurant.save
-        flash[:notice] = "restaurant was successfully created"
+        flash[:notice] = "Restaurant was successfully created"
         redirect_to admin_restaurants_path
       else
-        flash.now[:alert] = "rastaurant was failed to create"
+        flash.now[:alert] = "Rastaurant was failed to create"
         render :new
       end
     else
@@ -44,18 +44,18 @@ class Admin::RestaurantsController < Admin::BaseController
 
   def update
     if @restaurant.update(restaurant_params)
-      flash[:notice] = "restaurant was successfully updated"
+      flash[:notice] = "Restaurant was successfully updated"
       redirect_to admin_restaurant_path(@restaurant)
     else
-      render :update
-      flash.now[:alert] = "rastaurant was failed to update"      
+      flash.now[:alert] = "Rastaurant was failed to update"
+      render :edit
     end
   end 
 
   def destroy
     @restaurant.destroy
     redirect_to admin_restaurants_path
-    flash[:alert] = "restaurant was deleted"
+    flash[:alert] = "Restaurant was deleted"
 
   end
 

@@ -12,7 +12,9 @@
       <% end %>
       <h4><%= @user.email%></h4>
       <p><%= @user.introduction%><p>
-      <%= link_to "Edit Profile", edit_user_path, class:"btn btn-primary"%>
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_path, class:"btn btn-primary"%>
+      <% end %>
     </div>
   </div>
 </div>

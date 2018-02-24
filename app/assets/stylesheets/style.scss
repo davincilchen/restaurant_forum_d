@@ -30,4 +30,25 @@
   margin: 10px;
 }
 
+.my-restaurant {
+  display: inline-block;
+  padding: 7px 7px 0px 7px;
+  text-align: center;
+}
 
+.my-restaurant > div {
+  height: 60px;
+}
+
+.my-restaurant img {
+  max-height: 100%;
+
+}
+
+.my-restaurant :hover{
+  background-color: #eee;
+}
+
+.my-restaurant h5 {
+  color: #1E90FF;
+}

@@ -24,15 +24,22 @@
     <br>
 
     <!-- 顯示評論餐廳資料 -->
-
-    <h2><%= @commented_restaurants.count %> 已評論餐廳</h2>
-    <% @commented_restaurants.each do |restaurant| %>
-      <div>
-        <div class="col-md-4">
-          <h5><%= restaurant.name %></h5>
-        </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @commented_restaurants.count %> 已評論餐廳</h3>
       </div>
-    <% end %>
+      <div class="panel-body">
+        <% @commented_restaurants.each do |restaurant| %>
+          <div>
+            <div class="my-restaurant">
+              <%= image_tag restaurant.image, class: "img-responsive img-rounded" %>
+              <h5><%= restaurant.name %></h5>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
 
   </div>
 </div>

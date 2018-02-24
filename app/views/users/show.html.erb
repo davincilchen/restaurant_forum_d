@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <br>
+
+    <!-- 顯示個人檔案資料 -->
     <div class="col-md-4">
         <%= image_tag @user.avatar ,  class: "img-responsive img-rounded" %>
     </div>
@@ -16,5 +18,21 @@
         <%= link_to "Edit Profile", edit_user_path, class:"btn btn-primary"%>
       <% end %>
     </div>
+
+
+    <div class="clearfix"></div>
+    <br>
+
+    <!-- 顯示評論餐廳資料 -->
+
+    <h2>已評論餐廳</h2>
+    <% @commented_restaurants.each do |restaurant| %>
+      <div>
+        <div class="col-md-4">
+          <h5><%= restaurant.name %></h5>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 </div>

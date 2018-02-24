@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def show
-    @commented_restaurants = @user.restaurants
+    @commented_restaurants = @user.restaurants.uniq
   end
 
   def edit

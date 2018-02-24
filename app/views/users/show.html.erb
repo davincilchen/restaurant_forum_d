@@ -25,7 +25,7 @@
 
     <!-- 顯示評論餐廳資料 -->
 
-    <h2>已評論餐廳</h2>
+    <h2><%= @commented_restaurants.count %> 已評論餐廳</h2>
     <% @commented_restaurants.each do |restaurant| %>
       <div>
         <div class="col-md-4">

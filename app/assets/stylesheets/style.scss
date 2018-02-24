@@ -13,13 +13,20 @@
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
+  height: 360px;
 }
+
+
 
 .restaurant-item img{
   max-height: 180px;
   width: 100%;
 }
 
+
+.restaurant-item .restaurant-image {
+  height: 160px;
+}
 
 .restaurant-item .caption {
   padding: 10px;

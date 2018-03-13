@@ -6,7 +6,10 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
   validates_presence_of :name
-  has_many :comments
+
+   # 如果 User 已經有了評論，就不允許刪除帳號（刪除時拋出 Error）
+  has_many :comments, dependent: :restrict_with_error
+
   has_many :restaurants, through: :comments
 
   def admin?

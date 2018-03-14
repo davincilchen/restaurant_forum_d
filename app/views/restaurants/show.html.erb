@@ -24,9 +24,12 @@
     </div>
     <div class="col-md-6">
       <br>
-      <div class="well">
-      <strong>Description:</strong> <%= @restaurant.description %> <br>
-      </div>
+        <div class="well">
+        <strong>Description:</strong> <%= @restaurant.description %>
+        <br>
+        </div>
+      <hr>
+      <%= link_to 'Dashboard', dashboard_restaurant_path(@restaurant), class: "btn btn-primary" %>
     <div>
     </div>
   </div> <!-- row -->

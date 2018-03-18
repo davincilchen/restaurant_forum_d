@@ -1,12 +1,13 @@
 class RestaurantsController < ApplicationController
 
+  before_action :set_restaurant, only:[:show, :dashboard, :favorite, :unfavorite]
+
   def index
     @restaurants = Restaurant.order(created_at: :desc).page(params[:page]).per(9)
     @categories = Category.all
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
     @comment = Comment.new
   end
 
@@ -17,12 +18,11 @@ class RestaurantsController < ApplicationController
 
 
   def dashboard
-    @restaurant = Restaurant.find(params[:id])
+
   end
 
   # POST /restaurants/:id/favorite
   def favorite
-    @restaurant = Restaurant.find(params[:id])
     @restaurant.favorites.create!(user: current_user)
     #@restaurant.favorites.create!(user_id: current_user.id)
     #Favorite.create(restaurant: @restaurant, user: current_user)
@@ -33,13 +33,19 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants/:id/unfavorite
   def unfavorite
-    @restaurant = Restaurant.find(params[:id])
     favorite = Favorite.where(restaurant: @restaurant, user: current_user)
 
     if favorite.destroy_all
       flash[:alert] = "取消最愛餐廳"
     end
     redirect_back(fallback_location: root_path)
+  end
+
+
+  private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 
 end

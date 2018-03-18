@@ -36,7 +36,7 @@ class RestaurantsController < ApplicationController
     favorite = Favorite.where(restaurant: @restaurant, user: current_user)
 
     if favorite.destroy_all
-      flash[:alert] = "取消最愛餐廳"
+
     end
     redirect_back(fallback_location: root_path)
   end

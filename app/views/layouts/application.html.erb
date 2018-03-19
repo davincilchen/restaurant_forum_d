@@ -61,7 +61,8 @@
       </div>
     <% end %>
 
-    <% if current_page?(root_path) ||  current_page?(restaurants_path) ||  current_page?(feeds_restaurants_path) %>
+    <% if current_page?(root_path) ||  current_page?(restaurants_path) ||  current_page?(feeds_restaurants_path) ||  current_page?(ranking_restaurants_path) %>
+
       <div class="container">
         <div class="row">
           <!-- 使用 Bootstrap components 的 Nav Tabs -->
@@ -71,6 +72,8 @@
             </li>
 
             <li role="presentation" class=<%= raw('active') if current_page?(feeds_restaurants_path) %>><%= link_to '最新動態', feeds_restaurants_path %>
+            </li>
+            <li role="presentation" class=<%= raw('active') if current_page?(ranking_restaurants_path) %>><%= link_to '人氣餐廳', ranking_restaurants_path %>
             </li>
           </ul>
         </div>

@@ -50,6 +50,7 @@ namespace :dev do
 
   task fake_comment_clear: :environment do
     Comment.destroy_all
+    puts "delete all comments"
   end
 
   task fake_comment: :environment do
@@ -59,5 +60,25 @@ namespace :dev do
       end
     end
     puts "have create fake comments"
+  end
+
+  task fake_favorite_clear: :environment do
+    Favorite.destroy_all
+    Restaurant.all.each do |restaurant|
+      restaurant.count_favorites
+    end
+    puts "delete all favorites"
+  end
+
+  task fake_favorite_restaurant: :environment do
+    User.all.each do |user|
+      Restaurant.all.sample(30).each do |restaurant|
+        Favorite.create!(user: user, restaurant: restaurant)
+      end
+    end
+    Restaurant.all.each do |restaurant|
+      restaurant.count_favorites
+    end
+    puts "have create fake favorite restaurant"
   end
 end

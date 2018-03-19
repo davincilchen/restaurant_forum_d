@@ -31,7 +31,6 @@ class RestaurantsController < ApplicationController
     #@restaurant.favorites.create!(user_id: current_user.id)
     #Favorite.create(restaurant: @restaurant, user: current_user)
     #current_user.favorites.create(restaurant: @restaurant)
-    @restaurant.count_favorites
     redirect_back(fallback_location: root_path)  # 導回上一頁
   end
 
@@ -43,7 +42,6 @@ class RestaurantsController < ApplicationController
     if favorites.destroy_all
 
     end
-    @restaurant.count_favorites
     redirect_back(fallback_location: root_path)
   end
 

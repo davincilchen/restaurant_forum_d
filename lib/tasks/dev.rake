@@ -40,6 +40,28 @@ namespace :dev do
     puts "now you have #{User.count} users data"
   end
 
+  task fake_user_avator: :environment do
+    User.all.each do |user|
+      sel = user.id % 24
+      sel_str = sel.to_s.rjust(2, '0')
+      image_path = Rails.root.join("seed_img/p#{sel_str}.jpg")
+      image_file = nil
+
+      #puts image_path
+
+      if File.file?image_path
+        image_file = File.open(image_path)
+      end
+
+      if image_file
+        user.avatar = image_file
+        user.save!
+      end
+    end
+    puts "have create fake users avator"
+  end
+
+
   task fake_user_name: :environment do
     User.all.each do |user|
       user.name = FFaker::Name.first_name
@@ -48,6 +70,8 @@ namespace :dev do
     puts "have create fake name of users"
   end
 
+
+  # ================================== #
   task fake_comment_clear: :environment do
     Comment.destroy_all
     puts "delete all comments"

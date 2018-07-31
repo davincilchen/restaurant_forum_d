@@ -105,4 +105,34 @@ namespace :dev do
     end
     puts "have create fake favorite restaurant"
   end
+
+  task fake_relation: :environment do
+    Followship.destroy_all
+    User.all.each do |user|
+      rand_user = User.select{|x| x!=user}.sample(5)
+      rand(5).times do |i|
+        user.followships.create!(
+          user_id: user.id, 
+          following_id: rand_user[i].id)
+      end
+    end
+   
+    puts "have created fake followship"
+    puts "now you have #{Followship.count} followships data"
+
+    Friendship.destroy_all
+    User.all.each do |user|
+      rand_user = User.select{|x| x!=user}.sample(5)
+      rand(5).times do |i|
+        user.friendships.create!(
+          user_id: user.id, 
+          friend_id: rand_user[i].id)
+      end
+    end
+   
+    puts "have created fake friendship"
+    puts "now you have #{Friendship.count} friendships data"
+  end
+
+
 end

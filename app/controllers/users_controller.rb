@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @favorited_restaurants = @user.favorited_restaurants.uniq
     @followings = @user.followings
     @followers = @user.followers
-    
+    @friends = @user.all_friends
   end
 
   def edit

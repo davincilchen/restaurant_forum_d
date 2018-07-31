@@ -23,29 +23,91 @@
     <div class="clearfix"></div>
     <br>
 
-    <!-- 顯示評論餐廳資料 -->
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><strong><%= @commented_restaurants.count %> 已評論餐廳</strong></h3>
-      </div>
-      <div class="panel-body">
-        <% @commented_restaurants.each do |restaurant| %>
-          <%= link_to restaurant_path(restaurant) do %>
-            <div class="my-restaurant">
-              <% if restaurant.image? %>
-                <div>
-                  <%= image_tag restaurant.image, class: "img-responsive img-rounded" %>
+    <div class="col-md-3">
+      <!-- followings -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+         <h3 class="panel-title"><strong><%= @followings.count %> followings</strong></h3>
+        </div>
+        <div class="panel-body">
+          <% @user.followings.each do |following| %>
+            <%= link_to (following) do %>
+              <div class="my-restaurant">
+                <div class="col-md-5">
+                  <% if following.avatar? %>
+                    <div>
+                      <%= image_tag following.avatar, class: "img-responsive center-block img-circle" %>
+                    </div>
+                  <% else %>
+                    <div class="glyphicon glyphicon-picture"></div>
+                  <% end %>
                 </div>
-              <% else %>
-                <div class="glyphicon glyphicon-picture"></div>
-              <% end %>
-              <h5><%= restaurant.name %></h5>
-            </div>
+                <div class="col-md-7">
+                  <h4><%= link_to "#{
+                          if following.name 
+                            following.name 
+                          else 
+                            following.email.split("@").first 
+                          end 
+                        }", user_path(following) %></h4>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
+
+
+      
     </div>
 
+    <div class="col-md-9">
+      <!-- 顯示評論餐廳資料 -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong><%= @commented_restaurants.count %> 已評論餐廳</strong></h3>
+        </div>
+        <div class="panel-body">
+          <% @commented_restaurants.each do |restaurant| %>
+            <%= link_to restaurant_path(restaurant) do %>
+              <div class="my-restaurant">
+                <% if restaurant.image? %>
+                  <div>
+                    <%= image_tag restaurant.image, class: "img-responsive img-rounded" %>
+                  </div>
+                <% else %>
+                  <div class="glyphicon glyphicon-picture"></div>
+                <% end %>
+                <h5><%= restaurant.name %></h5>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- 顯示收藏過的餐廳 -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong><%= @favorited_restaurants.count %> 已收藏餐廳</strong></h3>
+        </div>
+        <div class="panel-body">
+          <% @favorited_restaurants.each do |restaurant| %>
+            <%= link_to restaurant_path(restaurant) do %>
+              <div class="my-restaurant">
+                <% if restaurant.image? %>
+                  <div>
+                    <%= image_tag restaurant.image, class: "img-responsive img-rounded" %>
+                  </div>
+                <% else %>
+                  <div class="glyphicon glyphicon-picture"></div>
+                <% end %>
+                <h5><%= restaurant.name %></h5>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

@@ -79,3 +79,18 @@
   width: 128px;
   height: 128px;
 }
+
+.my-followings {
+  display: inline-block;
+  padding: 7px 7px 0px 7px;
+  text-align: center;
+}
+
+.my-followings > div {
+  height: 60px;
+}
+
+.my-followings img {
+  max-height: 100%;
+
+}

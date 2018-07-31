@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @commented_restaurants = @user.restaurants.uniq
     @favorited_restaurants = @user.favorited_restaurants.uniq
     @followings = @user.followings
+    @followers = @user.followers
     
   end
 

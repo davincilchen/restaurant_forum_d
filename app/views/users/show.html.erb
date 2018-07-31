@@ -17,6 +17,7 @@
       <% if @user == current_user %>
         <%= link_to "Edit Profile", edit_user_path, class:"btn btn-primary"%>
       <% end %>
+      <%= link_to 'Friends', friend_list_user_path(@user), class: "btn btn-primary" %>
     </div>
 
 

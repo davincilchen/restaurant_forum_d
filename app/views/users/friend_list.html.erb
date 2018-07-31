@@ -1,0 +1,42 @@
+<div class="col-md-12">
+  <h1><%= "#{if @user.name 
+                  @user.name 
+                else
+                  @user.email.split("@").first 
+                end 
+              }'s Friends" %></h1>
+  <hr>
+  <div class="row">
+    <% @friend_list.each do |friend| %>
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <div class="center">
+            <% if friend.avatar? %>
+              <div>
+                <%= image_tag friend.avatar, class: "img-responsive center-block " %>
+              </div>
+            <% else %>
+              <div class="glyphicon glyphicon-picture"></div>
+            <% end %>
+
+          </div>
+          <div class="center">
+            <h4><%= link_to "#{
+                if friend.name 
+                  friend.name 
+                else
+                  friend.email.split("@").first 
+                end 
+              }", user_path(friend) %></h4>  
+          </div>
+          <div class="center">
+            <% if @user == current_user %>
+              <%= render partial: "shared/follow", locals: {user: friend} %>
+              <%= render partial: "shared/friend", locals: {user: friend} %>
+            <% end %>
+          </div>
+          <br>
+          <br>
+        </div>
+    <% end %>
+  </div>
+</div>
